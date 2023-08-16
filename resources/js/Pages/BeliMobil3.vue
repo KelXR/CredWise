@@ -4,6 +4,10 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import { Link } from '@inertiajs/vue3';
 
+    function formatMoney(value){
+        return new Intl.NumberFormat("id-ID").format(value)
+    }
+
     import mobil from '../mobil';
     let totalUang = parseInt(mobil.harga) + (parseInt(mobil.harga) * (parseInt(mobil.dp) / 100)) + (parseInt(mobil.harga) * (mobil.inflasi / 100));
     let jumlahUang = mobil.uang;
@@ -40,22 +44,22 @@
                 <div class="pb-9">
                     <div class="flex flex-col py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2 font-semibold"> Total uang yang dibutuhkan sebesar </h1>
-                        <h1 class="text-title font-bold text-darkorange"> Rp {{ totalUang }},00 </h1>
+                        <h1 class="text-title font-bold text-darkorange"> Rp {{ formatMoney(totalUang) }},00 </h1>
                     </div>
                 </div>
                 <h1 class="pb-4 text-heading font-bold"> Strategi </h1>
                 <div class="">
                     <div class="flex flex-col mb-6 py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2"> Jumlah uang yang dimiliki saat ini </h1>
-                        <h1 class="text-subheading font-medium"> Rp {{ jumlahUang }},00 </h1>
+                        <h1 class="text-subheading font-medium"> Rp {{ formatMoney(jumlahUang) }},00 </h1>
                     </div>
                     <div class="flex flex-col mb-6 py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2"> Target investasi (per bulan) </h1>
-                        <h1 class="text-subheading font-medium"> Rp {{ targetInvestasi }},00 </h1>
+                        <h1 class="text-subheading font-medium"> Rp {{ formatMoney(targetInvestasi) }},00 </h1>
                     </div>
                     <div class="flex flex-col mb-6 py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2"> Return investasi </h1>
-                        <h1 class="text-subheading font-medium"> {{ returnInvestasi }} % / Tahun </h1>
+                        <h1 class="text-subheading font-medium"> {{ returnInvestasi }}% / Tahun </h1>
                     </div>
                     <div class="flex flex-col mb-6 py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2"> Jumlah periode </h1>
@@ -63,7 +67,7 @@
                     </div>
                     <div class="flex flex-col mb-6 py-4 bg-yellowtb pl-3 w-[447px]">
                         <h1 class="text-name pb-2"> Hasil investasi </h1>
-                        <h1 class="text-subheading font-medium"> Rp {{ hasilInvestasi }},00 </h1>
+                        <h1 class="text-subheading font-medium"> Rp {{ formatMoney(hasilInvestasi) }},00 </h1>
                     </div>
                 </div>
             </div>

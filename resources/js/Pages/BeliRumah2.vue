@@ -35,12 +35,12 @@
             <form action="" class="mr-7">
             <!-- input Waktu kpr -->
             <div class="flex flex-col pb-6">
-                <InputLabel for="waktuKPR" value ="Jangka Waktu KPR" />
+                <InputLabel for="waktuKPR" value ="Jangka Waktu KPR (bulan)" />
                 <TextInput v-model="rumah.waktuKPR" id="waktuKPR" type="text" class="w-52 mt-4"/>
             </div>
             <!-- input Periode suku bunga fix -->
             <div class="flex flex-col pb-6">
-                <InputLabel for="periodeBungaFix" value ="Periode Suku Bunga Fix" />
+                <InputLabel for="periodeBungaFix" value ="Periode Suku Bunga Fix (bulan)" />
                 <TextInput v-model="rumah.periodeBungaFix" id="periodeBungaFix" type="text" class="w-52 mt-4 appearance-none"/>
             </div>
         </form>

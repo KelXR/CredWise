@@ -5,6 +5,10 @@
     import { Link } from '@inertiajs/vue3';
     import rumah from '../house';
 
+    function formatMoney(value){
+        return new Intl.NumberFormat("id-ID").format(value)
+    }
+
     let pokokPinjaman = (1-(parseInt(rumah.dp)/100)) * parseInt(rumah.harga);
     let hitung = ((pokokPinjaman * parseInt(rumah.bungaFix) *parseInt(rumah.periodeBungaFix)) + pokokPinjaman * parseInt(rumah.bungaFloating) * (parseInt(rumah.waktuKPR) - parseInt(rumah.periodeBungaFix)));
     let hitungPersen = (hitung / ((parseInt(rumah.harga) - (100 - parseInt(rumah.dp)) / 100))).toFixed(2);
@@ -44,12 +48,12 @@
         <div class="w-1/3 mb-10">
             <div class="bg-darkyellow p-4">
                 <div>Total bunga KPR yang harus kamu bayarkan adalah</div>
-                <div class="text-title font-bold text-darkorange">Rp {{hitung}},00</div>
+                <div class="text-title font-bold text-darkorange">Rp {{formatMoney(hitung)}},00</div>
                 <div>Setara dengan <span class="text-title font-bold text-darkorange">{{ hitungPersen }}%</span> dari pokok pinjamanmu.</div>
             </div>
             <div class="bg-darkyellow mt-7 p-4">
                 <div>Cicilan KPRmu dalam rentang </div>
-                <div class="text-title font-bold text-darkorange">Rp {{lowest}},00-{{ highest }},00</div>
+                <div class="text-title font-bold text-darkorange">Rp {{formatMoney(lowest)}},00-{{ formatMoney(highest) }},00</div>
                 <div>dan ini setara dengan <span class="text-title font-bold text-darkorange">{{lowestPercen}}-{{highestPercen}}%</span> dari penghasilan bulananmu.</div>
             </div>
             <div class="bg-darkyellow mt-7 p-4">
@@ -66,11 +70,11 @@
         <div class="w-1/3">
             <div class="bg-darkyellow p-4 mb-7">
                 <div>Pokok pinjaman</div>
-                <div class="font-semibold">Rp {{pokokPinjaman}},00</div>
+                <div class="font-semibold">Rp {{ formatMoney(pokokPinjaman) }},00</div>
             </div>
             <div class="bg-darkyellow p-4">
                 <div>Total bunga periode fix</div>
-                <div class="font-semibold">Rp {{ bungaFix }},00</div>
+                <div class="font-semibold">Rp {{ formatMoney(bungaFix) }},00</div>
             </div>
         </div>
         <div class="w-1/3 ml-7">
@@ -90,7 +94,7 @@
             </div>
             <div class="bg-darkyellow p-4">
                 <div>Total bunga periode floating</div>
-                <div class="font-semibold">Rp {{ bungaFloating }},00</div>
+                <div class="font-semibold">Rp {{ formatMoney(bungaFloating) }},00</div>
             </div>
         </div>
     </div>
